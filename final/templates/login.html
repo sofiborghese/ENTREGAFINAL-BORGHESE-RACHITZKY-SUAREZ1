@@ -1,0 +1,12 @@
+{% extends 'base.html' %} 
+{% block header %} 
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type='submit'> Iniciar sesión</button>
+</form>
+
+{% endblock header %}

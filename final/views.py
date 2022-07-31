@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import paises 
 from django.template import loader
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login,logout,authenticate
+
 
 # Create your views here.
 def inicio (request):
@@ -58,3 +61,25 @@ def buscar(request):
     documento2 = plantilla.render( contexto2 )
 
     return HttpResponse( documento2 )
+
+def login_request(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data = request.POST)
+        
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contra = form.cleaned_data.get('password')
+            
+            user = authenticate(username=usuario, password = contra)
+            
+            if user is not None:
+                login(request, user)
+                return render(request, "index.html", {"mensaje": f"Bienvenido {usuario}"} )
+            else:
+                return render(request, "index.html", {"mensaje": "Error, datos erróneo"} )
+        else:
+            
+            return render(request, "index.html", {"mensaje": "Error, formulario erróneo"} )
+    form = AuthenticationForm()
+    
+    return render(request, "index.html", {"form":form} )

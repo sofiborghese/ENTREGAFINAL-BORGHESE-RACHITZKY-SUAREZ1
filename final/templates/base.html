@@ -29,10 +29,13 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href={%url "nosotros" %}>Acerca de nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "paisess" %}>Paises</a></li>
-                        <li class="nav-item"><a class="nav-link" href={%url "buscar" %}>Buscador</a></li>
-                       
+                        <li class="nav-item"><a class="nav-link" href={%url "buscar" %}>Buscador</a></li>                     
                     </ul>
                 </div>
+                <!-- Acá rey -->
+                
+                <a class="navbar-brand" href={%url "Login" %}>Login</a>
+
             </div>
         </nav>
         <!-- Masthead-->
@@ -41,24 +44,16 @@
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
                         {% block header %} 
-                            
+
                         {% endblock header %}
                     </div>
                 </div>
             </div>
         </header>
 
-
+        
       {% block content %} 
-      
-      
-      
-      
-      
-      
-      
-      
-      
+        
       {% endblock %}
 
       
