@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{%extends "index.html"%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% block content %}
+
+<center> <H1> ¿Quiénes somos? </H1> 
+<a href={% url "sofi"%} class="btn btn-primary btn-lg active" role="button">Sofia Borghese </a>
+<a href={% url "juli"%} class="btn btn-primary btn-lg active" role="button">Julian Rachitzky </a>
+<a href={% url "vict"%} class="btn btn-primary btn-lg active" role="button">Victor Suarez </a>
+</center>
+
+
+{%endblock%}
+
+
+
+</body>
+</html>

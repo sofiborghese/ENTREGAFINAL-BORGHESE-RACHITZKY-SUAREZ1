@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paises</title>
+
+    {% block title %}
+    <title>Paises</title>
+    {% endblock title %}
+
+</head>
+
+<body>
+   
+
+    {% block content %}
+    <p>
+    
+
+    <form action="" method="get">
+        {% csrf_token %}
+       
+
+       <label for="nombre_pais">Ingrese del pais visitado: </label>
+        <input type="text" name = "nombre_pais">
+
+        <label for="visita">Ingrese el año en que visito dicho pais: </label>
+        <input type="numer" name = "visita">
+
+        <label for="idioma">Ingrese el idioma del pais mencionado: </label>
+        <input type="text" name = "idioma">
+
+
+        <button type="submit">Enviar</button> 
+        
+
+    </form>
+
+</p>
+
+
+    <hr>
+
+    <img src= "https://create.vista.com/files/dp/st2_4328893_437395232_thumb_450.jpg" align="right"/>
+
+
+     <h1>Listado de paises: </h1> 
+
+
+     {% for pais in web %}
+
+    <ul>
+        <li>Pais visitado: {{pais.nombre_pais}}</li>
+        <li>Año de visita: {{pais.visita}}</li>
+        <li>idioma: {{pais.idioma}}</li>
+        
+    </ul> 
+
+
+
+    {% endfor %} 
+   
+    
+       </p>
+
+    
+    
+</body>
+</html>
+{% endblock %}
