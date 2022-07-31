@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+
+{% block title %}
+<title>Nosotros</title>
+{% endblock title %} 
+
+ {% block header %} 
+<center>
+  <div class="card border-info mb-3" style="max-width: 20rem;">
+  <div class="card-header">VICTOR SUAREZ</div>
+  <div class="card-body">
+    <h4 class="card-title">Un poco sobre mi...</h4>
+    <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique sem at erat pellentesque, a dignissim mi convallis.</p>
+  </div>
+</center>
+  <center>
+     <div>
+        <a href={% url "sofi"%} class="btn btn-primary btn-lg active" role="button">Sofia Borghese </a>
+        <a href={% url "juli"%} class="btn btn-primary btn-lg active" role="button">Julian Rachitzky </a>
+     </div>
+   </center>
+ {% endblock header %}

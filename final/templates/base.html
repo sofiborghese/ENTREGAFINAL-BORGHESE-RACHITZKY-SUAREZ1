@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Grayscale - Start Bootstrap Theme</title>
+        {% block title %} {% endblock title %}
         <link rel="icon" type="image/x-icon" href= {% static 'final/assets/favicon.ico' %} />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -40,9 +40,9 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">EL BLOG DE TUS VIAJES</h1>
-                        <h2 class="text-white-50 mx-auto mt-2 mb-5">Conoce, disfruta y comparte</h2>
-                        <a class="btn btn-primary" href="nosotros">Comencemos</a>
+                        {% block header %} 
+                            
+                        {% endblock header %}
                     </div>
                 </div>
             </div>
