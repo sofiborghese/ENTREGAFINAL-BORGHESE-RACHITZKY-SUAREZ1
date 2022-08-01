@@ -11,5 +11,6 @@ urlpatterns = [
     path ("sofi/", so, name= "sofi"),
     path ("julian/", ju, name="juli"),
     path ("victor/", vic, name= "vict"),
-    path ("login/", login_request, name= "Login")
+    path ("login/", login_request, name= "Login"),
+    path ("register/", register, name= "Register") 
 ]

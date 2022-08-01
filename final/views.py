@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
+from final.forms import UserRegisterForm
 from .models import paises 
 from django.template import loader
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -76,10 +79,24 @@ def login_request(request):
                 login(request, user)
                 return render(request, "index.html", {"mensaje": f"Bienvenido {usuario}"} )
             else:
-                return render(request, "index.html", {"mensaje": "Error, datos erróneo"} )
+                return render(request, "", {"mensaje": "Error, datos erróneo"} )
         else:
             
-            return render(request, "index.html", {"mensaje": "Error, formulario erróneo"} )
+            return render(request, "", {"mensaje": "Error, formulario erróneo"} )
     form = AuthenticationForm()
     
-    return render(request, "index.html", {"form":form} )
+    return render(request, "accounts/login.html", {"form":form} )
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            form.save()
+            return render(request,"index.html",{"mensaje":"Usuario creado :)"})
+           
+    else:
+        form = UserRegisterForm()   
+    
+    return render(request, "accounts/register.html", {"form":form} )
