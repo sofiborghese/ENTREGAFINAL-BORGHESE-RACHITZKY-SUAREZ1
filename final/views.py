@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from final.forms import UserRegisterForm
+from final.forms import UserRegisterForm,UserEditForm
 from .models import paises 
 from django.template import loader
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
@@ -100,3 +100,48 @@ def register(request):
         form = UserRegisterForm()   
     
     return render(request, "accounts/register.html", {"form":form} )
+
+@login_required
+def editar_perfil(request):
+    
+    user = request.user
+    #mas_datos_usuario, _ = MasDatosUsuario.objects.get_or_create(user=user)
+    
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, request.FILES)
+        if form.is_valid():
+           
+            informacion = form.cleaned_data
+            user.email = informacion['email']
+            user.password1 = informacion['password1']
+            user.password2 = informacion['password2']
+            # if data.get('first_name'):
+            #     user.first_name = data.get('first_name')
+            # if data.get('last_name'):
+            #     user.last_name = data.get('last_name')
+                
+            # user.email = data.get('email') if data.get('email') else user.email
+            # #mas_datos_usuario.avatar = data.get('avatar') if data.get('avatar') else mas_datos_usuario.avatar
+            
+            # # if data.get('password1') and data.get('password1') == data.get('password2'):
+            # #     user.set_password(data.get('password1'))
+            
+            # #mas_datos_usuario.save()
+            user.save()
+    
+            return render(request, 'index.html')
+        
+        else:
+            miFormuilario = UserEditForm(initial={'email':user.email})
+    #         return render(request, 'accounts/editar_perfil.html', {'form': form})
+            
+    # form = UserEditForm(
+    #         initial={
+    #             'email': user.email,
+    #             'first_name': user.first_name,
+    #             'last_name': user.last_name,
+    #             'avatar': mas_datos_usuario.avatar
+    #         }
+    #     )
+
+    return render(request, 'accounts/editar_perfil.html', {'miFormulario': form, "usuario":user})
