@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "index.html"%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block title %}
+<title>Editar Perfil</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>
+    Editando perfil de {{request.user.username}}
+</h1>
+{% endblock texto_header %}
+
+{% block despues_del_header %}
+<p>
+    <form action={% url 'editar_perfil' %} method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <button>Editar</button>
+    </form>
+    <p>
+        <a href={% url 'cambiar_password' %}>Cambiar clave</a>
+       
+    </p>
+</p>
+{% endblock despues_del_header %}
+    
+</body>
+</html>
