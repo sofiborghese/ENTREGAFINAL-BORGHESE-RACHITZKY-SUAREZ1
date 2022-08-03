@@ -1,12 +1,12 @@
 {% extends 'base.html' %} 
-{% block content %} 
+{% block header %} 
 
 <form action="" method="POST">
     {% csrf_token %}
     <table>
     {{form.as_p}}
     </table>
-    <button type='submit'> Registro</button>
+    <button type="submit" class="btn btn-outline-success">Registrate</button>
 </form>
 
-{% endblock content %}
+{% endblock header %}
