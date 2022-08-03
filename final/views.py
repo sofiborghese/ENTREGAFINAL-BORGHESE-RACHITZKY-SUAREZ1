@@ -87,19 +87,7 @@ def login_request(request):
     
     return render(request, "accounts/login.html", {"form":form} )
 
-# def register(request):
-#     if request.method == 'POST':
-#         form = UserRegisterForm(request.POST)
-        
-#         if form.is_valid():
-#             username = form.cleaned_data.get('username')
-#             form.save()
-#             return render(request,"index.html",{"mensaje":"Usuario creado :)"})
-           
-#     else:
-#         form = UserRegisterForm()   
-    
-#     return render(request, "accounts/register.html", {"form":form} )
+
 
 def register(request):
     
@@ -110,7 +98,7 @@ def register(request):
         if form.is_valid():
             username= form.cleaned_data["username"]
             form.save()
-            return render (request, "index.html" , {"mensaje": "Usuario Creado "})
+            return render (request, "login.html" , {"mensaje": "Usuario Creado "})
 
     else:
         #form=UserCreationForm()
